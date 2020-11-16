@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mainlogin</title>
+</head>
+<body>
+    <h1> Login Registration</h1>
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{message}}</p>
+        {% endfor %}
+    {% endif %}
+    <form action="/register" method="post">
+        {% csrf_token %}
+        <p>  Name: <input type="" name="name" id=""></p>
+        <p> username: <input type="" name="username" id=""></p>
+        <p> Password: <input type="" name="pass" id=""></p>
+        <p> Confirm PW: <input type="" name="confpass" id=""></p>
+        <p> <input type="submit" value="Register"></p>
+    </form>
+    
+
+    <hr>
+    <h2> Log in here</h2>
+    <form action="/login" method="post">
+        {% csrf_token %}
+        <p> username: <input type="" name="username" id=""></p>
+        <p> Password: <input type="" name="pass" id=""></p>
+        <p> <input type="submit" value="sign-in"></p>
+    </form>
+    
+</body>
+</html>

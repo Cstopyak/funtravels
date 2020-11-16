@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>travels</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+    <h1> Welcome {{loginUser.name}}!</h1>
+    <a href="/logout"> Logout here</a>
+    <table>
+        <tr>
+            <th>Description</th>
+            <th>Travel Start Date</th>
+            <th>Travel End Date</th>
+            <th> Plan</th>
+            <th>Action</th>
+        </tr>
+
+        {% for x in favitem %}
+        <tr>
+            <td> <a href="/travels/{{x.id}}"> {{x.trip_name}}</td></a>
+            <td>{{x.startdate}}</td>
+            <td>{{x.enddate}}</td>
+            <td>{{x.plan}}</td>
+            <td><a href="/removetrip/{{x.id}}"> Cancel </a> | {% if x.creator == loginUser %} <a href="/deletetrip/{{x.id}}"> Delete</a>{% endif %}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+    <a href="/addtrip"> Click me to add a new trip</a>
+
+    <h2> Other User's Travel Plans</h2>
+
+    <table>
+        <tr>
+            <th>Description</th>
+            <th>Travel Start Date</th>
+            <th>Travel End Date</th>
+            <th>Do you Want to Join?</th>
+        </tr>
+        {% for x in nonfavitem %}
+        <tr>
+            <td> <a href="/dashboard/{{x.id}}"> {{x.trip_name}}</td></a>
+            <td>{{x.startdate}}</td>
+            <td>{{x.enddate}}</td>
+            <td> <a href="/jointrip/{{x.id}}"> Join</a></td>
+        </tr>
+        {% endfor%}
+
+    </table>
+</body>
+
+</html>

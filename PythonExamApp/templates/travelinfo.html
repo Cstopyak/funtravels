@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Info</title>
+</head>
+
+<body>
+    <h1>{{itemselected.trip_name}}</h1>
+    
+    <p>Planned by: {{itemselected.creator.name}}</p>
+    <p> Description: {{itemselected.plan}}</p>
+    <p> Travel Date from: {{itemselected.startdate}}</p>
+    <p>Travel Date To: {{itemselected.enddate}}</p>
+   
+
+
+    <h2>Other Users Joing the Trip:</h2>
+    {% for userselect in itemselected.traveltrips.all %}
+    <p>{{userselect.name}} </p>
+    {% endfor %}
+  
+    <a href="/travels"> Back</a>
+    <a href="/logout"> Logout</a>
+
+</body>
+
+</html>

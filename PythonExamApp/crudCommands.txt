@@ -1,0 +1,18 @@
+from PythonExamApp.models import *
+
+User.objects.create(name= "colby" , username= "colby", password= "11111111")
+User.objects.create(name= "LebronJ" , username= "LebronJ", password= "11111111")
+User.objects.create(name= "HulkH" , username= "HulkH", password= "11111111")
+
+item.objects.create(trip_name = "Nashville, TN", creator = User.objects.get(id=1), startdate = "2019-05-26", enddate = "2019-05-28", plan = "Go to Wrestlmania")
+item.objects.create(trip_name = "Paris, France", creator = User.objects.get(id=1), startdate = "2019-10-15", enddate = "2019-10-25", plan = "Chees Tour")
+item.objects.create(trip_name = "Black Rock, NV", creator = User.objects.get(id=1), startdate = "2019-08-27", enddate = "2019-09-04", plan = "Burning Man")
+item.objects.create(trip_name = "Bali, Indonesia", creator = User.objects.get(id=2), startdate = "2019-05-01", enddate = "2019-05-12", plan = "Fun Stuff")
+item.objects.create(trip_name = "Guadalajara, Mexica", creator = User.objects.get(id=2), startdate = "2019-12-25", enddate = "2019-01-15", plan = "Mexico!")
+item.objects.create(trip_name = "Cuzco, peru", creator = User.objects.get(id=2), startdate = "2018-05-12", enddate = "2018-05-22", plan = "Peru!")
+
+manytomany
+
+item.objects.get(id=1).traveltrips.add(User.objects.get(id=1))
+item.objects.get(id=2).traveltrips.add(User.objects.get(id=1))
+item.objects.get(id=3).traveltrips.add(User.objects.get(id=1))
